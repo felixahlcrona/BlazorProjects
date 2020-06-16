@@ -1,0 +1,20 @@
+﻿@page "/SortByLanguage"
+@inherits BlazorServer.Pages.SubtitleFinderBase
+@using EasySubFinder.Entites
+
+@code{
+    [Parameter] public IEnumerable<MovieClass> movieList { get; set; }
+    [Parameter] public string Language { get; set; }
+    [Parameter] public EventCallback<string> LanguageChanged { get; set; }
+}
+
+
+
+@if (movieList.Any())
+{
+    <div style="display:inline-flex">
+        <img src="https://lipis.github.io/flag-icon-css/flags/4x3/se.svg" @onclick="@(() => LanguageChanged.InvokeAsync("Swedish"))" class="flagIcon">
+        <img src="https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg"  @onclick="@(() => LanguageChanged.InvokeAsync("English"))" class="flagIcon">
+    </div>
+   
+}

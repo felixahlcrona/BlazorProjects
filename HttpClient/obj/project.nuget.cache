@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "KvNAbq10rEMr78qQTdrE1URSVFP0etCm5x3HmnU28EIpty8H7cXmEEI2s/TG1F2XYAKfDiPaOiaw8sUT0lTQeQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\felix\\source\\repos\\BlazorProjectsRepo\\HttpClient\\HttpClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\felix\\.nuget\\packages\\system.net.http.json\\3.2.1\\system.net.http.json.3.2.1.nupkg.sha512",
+    "C:\\Users\\felix\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
+    "C:\\Users\\felix\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

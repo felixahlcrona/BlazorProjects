@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "DvKo79GbCrnXkEJb0YoU5PKzYU2xeFy9gpCe9STiXgMkheAE20cT8gnnWYnmC7CI2bTorNyndd6sQ/KEmVaEUQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\felix\\source\\repos\\BlazorNew\\Api\\Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\felix\\.nuget\\packages\\system.net.http.json\\3.2.1\\system.net.http.json.3.2.1.nupkg.sha512",
+    "C:\\Users\\felix\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
+    "C:\\Users\\felix\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

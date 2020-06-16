@@ -1,0 +1,15 @@
+﻿@page "/Poster"
+@inherits BlazorServer.Pages.SubtitleFinderBase
+@using EasySubFinder.Entites
+
+@code{
+    [Parameter] public IEnumerable<MovieClass> movieList { get; set; }
+}
+
+
+@if (movieList.Any())
+{
+    <div class="animate__animated animate__bounceIn">
+        <img src="@movieList.FirstOrDefault().Poster" class="posterSection">
+    </div>
+}

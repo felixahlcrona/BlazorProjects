@@ -1,0 +1,161 @@
+.centerDiv {
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    overflow-wrap: break-word;
+    padding: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.containerRight{
+    display:flex
+}
+.containerLeft {
+    display: flex
+}
+.mainDiv {
+    padding-top: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
+
+}
+
+.textBox {
+    background-color: #d1ecf1;
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.movieCard {
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    background-color: #fefefe;
+    max-width: 675px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+    .movieCard:hover {
+        background-color: #d3f3d3;
+    }
+
+.detailsSection {
+    background-color: #fefefe;
+    max-width: 500px;
+    padding: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: inline-grid;
+}
+
+.posterSection {
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 35vh;
+    margin: auto;
+}
+.topMenu {
+    display: inline-flex;
+    padding: 1%;
+}
+
+.flagIcon {
+    width: 70px;
+    margin: auto;
+    padding: 7px;
+}
+    .flagIcon:hover {
+        background-color: #d3f3d3;
+    }
+
+
+.projectCard {
+    text-align: center;
+    justify-content: center;
+    /* margin: auto; */
+    background-color: #fefefe;
+    max-width: 355px;
+    margin: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+    .projectCard:hover {
+        background-color: #d3f3d3;
+    }
+
+.projectMenu {
+    display: inline-block;
+    justify-content: center;
+
+}
+
+.cards-list {
+    z-index: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-right: 10%;
+    margin-left: 10%;
+    width: 80%;
+}
+
+.menuCard {
+    width: 271px;
+    height: 250px;
+    border-radius: 73px;
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+    .menuCard .card_image {
+        width: inherit;
+        height: inherit;
+        border-radius: 40px;
+    }
+
+        .menuCard .card_image img {
+            width: inherit;
+            height: inherit;
+            border-radius: 40px;
+            object-fit: cover;
+        }
+
+    .menuCard .card_title {
+        text-align: center;
+        border-radius: 0px 0px 40px 40px;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: -80px;
+        height: 40px;
+    }
+
+    .menuCard:hover {
+        transform: scale(0.9, 0.9);
+        box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), -5px -5px 30px 15px rgba(0,0,0,0.22);
+    }
+
+.title-white {
+    color: white;
+}
+
+.title-black {
+    color: black;
+}
+
+.mdc-dialog__surface{
+    height:70%;
+}
+
+.typeAheadInput {
+    display: flex;
+    height: 100%;
+    margin: 0;
+}

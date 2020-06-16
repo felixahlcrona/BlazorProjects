@@ -1,0 +1,69 @@
+﻿@page "/drinkPicker"
+@inherits DrinkBase
+@using System.Globalization
+@using BlazorServer.Components
+@using Syncfusion.Blazor.Inputs;
+
+<div class="centerDiv">
+    <div class="textBox">
+        <h3> Systembolaget full sortiment</h3>
+
+        @if (loading == true)
+        {
+            <LoadingIcon />
+        }
+            
+        @if (loading == false)
+        {
+
+            <TypeAhead drinkList="listOfDrinks" setDrink="(string e) => typeAheadResultCallback(e)" />
+            @if (listOfDrinksfilter.Count() >= 2)
+            {
+                <div class="sliderwrap">
+                    <SfSlider @bind-Value="@Value" Min="listOfDrinksfilter.OrderBy(e => e.Price).FirstOrDefault().Price"
+                              Max="listOfDrinksfilter.OrderByDescending(e => e.Price).FirstOrDefault().Price" Type="@SliderType.MinRange">
+                        <SliderTicksData Placement="@Placement.None" LargeStep="20" SmallStep="5" ShowSmallTicks="false"></SliderTicksData>
+                        <SliderTooltipData IsVisible="true" Placement="@TooltipPlacement.Before"></SliderTooltipData>
+                        <SliderEvents TValue="int"
+                                      ValueChange="@((e) => CurrentValue = e.Value  )"
+                                      OnChange="@(e => CurrentValue = e.Value )">
+                        </SliderEvents>
+                    </SfSlider>
+                </div>
+            }
+
+
+            <MatButton Raised="true" @onclick="@((e) => showMore ^= true)">Show categorys</MatButton>
+            @if (showMore == true)
+            {
+                <div class="drinkCategory">
+                    @foreach (var item in listOfDrinks.GroupBy(e => e.Type).Select(g => g.First()).OrderBy(e => e.Type).ToList())
+                    {
+                        <MatButton @onclick="@(() => GetByType(item.Type))"> @item.Type </MatButton>
+                    }
+                </div>
+
+            }
+        }
+
+
+    </div>
+    <div class="drinkContainer">
+        @foreach (var item in listOfDrinksfilter.Where(e => e.Price <= CurrentValue))
+        {
+        <div class="mat-elevation-z10">
+                <h2>@item.ProductNameBold</h2>
+                <h3>@item.Price kr</h3>
+                <h3>@item.AlcoholPercentage %</h3>
+                <img src=@($"https://product-cdn.systembolaget.se/productimages/{@item.ProductId}/{@item.ProductId}_200.png") onerror="this.src='https://www.systembolaget.se/content/assets/images/products/product-placeholder.png';" class="drinkImage" />
+        </div>
+
+        }
+    </div>
+
+</div>
+
+
+
+
+

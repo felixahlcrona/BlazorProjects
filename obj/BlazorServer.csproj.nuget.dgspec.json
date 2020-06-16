@@ -1,0 +1,110 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\felix\\source\\repos\\BlazorNew\\BlazorServer.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\felix\\source\\repos\\BlazorNew\\BlazorServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\felix\\source\\repos\\BlazorNew\\BlazorServer.csproj",
+        "projectName": "BlazorServer",
+        "projectPath": "C:\\Users\\felix\\source\\repos\\BlazorNew\\BlazorServer.csproj",
+        "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\felix\\source\\repos\\BlazorNew\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\felix\\source\\repos\\Api\\Api.csproj": {
+                "projectPath": "C:\\Users\\felix\\source\\repos\\Api\\Api.csproj"
+              },
+              "C:\\Users\\felix\\source\\repos\\AvanzaScraper\\AvanzaScraper.csproj": {
+                "projectPath": "C:\\Users\\felix\\source\\repos\\AvanzaScraper\\AvanzaScraper.csproj"
+              },
+              "C:\\Users\\felix\\source\\repos\\SubtitleCrawler\\SubtitleCrawler.csproj": {
+                "projectPath": "C:\\Users\\felix\\source\\repos\\SubtitleCrawler\\SubtitleCrawler.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Blazored.Typeahead": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "MatBlazor": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            },
+            "MoreLinq.Source.MoreEnumerable.DistinctBy": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[2.9.7, )"
+            },
+            "Syncfusion.Blazor": {
+              "target": "Package",
+              "version": "[18.1.0.55, )"
+            },
+            "morelinq": {
+              "target": "Package",
+              "version": "[3.3.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
