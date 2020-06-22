@@ -16,36 +16,52 @@ namespace BlazorServer.Pages
     public class DrinkBase : ComponentBase
     {
         public IEnumerable<DrinksModel> listOfDrinks = new List<DrinksModel>();
-        public SystemBolaget _systemBolagetAPI = new SystemBolaget(new HttpClient());
+        private LzyCache _lzyCache = new LzyCache(new SystemBolaget(new HttpClient()));
         public IEnumerable<DrinksModel> listOfDrinksfilter = new List<DrinksModel>();
-        public bool loading;
-        public bool showMore;
+
+        public bool isLoading;
+        public bool isShowCategory;
+        public bool isDialogOpen = false;
+        public bool isPriceFiltering;
         public string callbackString;
         public int Value = 10;
         public int CurrentDrinks;
+        public string dialogId;
         public float? CurrentValue { get; set; }
 
+
+        public void OpenDialog(string e)
+        {
+            dialogId = e;
+            isDialogOpen = true;
+        }
         protected override async Task OnInitializedAsync()
         {
-            loading = true;
-            listOfDrinks = await _systemBolagetAPI.GetAllProductsAsync();
-            loading = false;
+            isLoading = true;
+            listOfDrinks = await _lzyCache.GetAllProductsAsync();
+            isLoading = false;
         }
 
 
         public void GetByType(string type)
         {
             listOfDrinksfilter = listOfDrinks.Where(e => e.Type == type.ToString());
-            showMore = false;
+            CurrentValue = listOfDrinksfilter.OrderBy(e => e.Price).FirstOrDefault().Price;
+            isShowCategory = false;
+            isPriceFiltering = true;
         }
 
 
-        public void typeAheadResultCallback(string e)
+        public void TypeAheadResultCallback(string e)
         {
             callbackString = e;
             listOfDrinksfilter = listOfDrinks.Where(e => e.ProductNameBold == callbackString);
             CurrentValue = listOfDrinksfilter.OrderBy(e => e.Price).FirstOrDefault().Price;
+            isPriceFiltering = false;
         }
+
+        
+       
 
      
     }

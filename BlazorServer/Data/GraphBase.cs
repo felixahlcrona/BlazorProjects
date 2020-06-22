@@ -32,9 +32,6 @@ namespace BlazorServer.Pages
         public void Change(DateTime? value)
         {
             var selectedDate = DateTime.Parse(value.ToString()).ToShortDateString();
-            //var x = value.ToString();
-            //var z = DateTime.Parse(x);
-            //var b = z.ToShortDateString();
             OMX = GetTradingHistory("OMXS30").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
             CertShort = GetTradingHistory("CertShort").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
             CertLong = GetTradingHistory("CertLong").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
@@ -42,18 +39,6 @@ namespace BlazorServer.Pages
             FutureShort = GetTradingHistory("FutureShort").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
             StateHasChanged();
         }
-
-        public void GetDAY()
-        {
-            int V2 = CertShort.Select(e => e.Price).ElementAt(CertShort.Count() - 2);
-            int V1 = CertShort.Select(e => e.Price).LastOrDefault();
-
-            difference = ((V2 - V1) / Math.Abs(V1)) * 100;
-        }
-
-
-
-
 
 
         public static List<StockObject> GetTradingHistory(string ticker)

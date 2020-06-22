@@ -8,18 +8,20 @@
     <div class="textBox">
         <h3> Systembolaget full sortiment</h3>
 
-        @if (loading == true)
+        @if (isLoading == true)
         {
             <LoadingIcon />
         }
-            
-        @if (loading == false)
+
+        @if (isLoading == false)
         {
 
-            <TypeAhead drinkList="listOfDrinks" setDrink="(string e) => typeAheadResultCallback(e)" />
-            @if (listOfDrinksfilter.Count() >= 2)
+
+            <TypeAhead drinkList="listOfDrinks" setDrink="(string e) => TypeAheadResultCallback(e)" />
+            @if (isPriceFiltering == true && listOfDrinksfilter.Count() > 1)
             {
                 <div class="sliderwrap">
+                    <h3>@listOfDrinksfilter.FirstOrDefault().Type under @CurrentValue Kr</h3>
                     <SfSlider @bind-Value="@Value" Min="listOfDrinksfilter.OrderBy(e => e.Price).FirstOrDefault().Price"
                               Max="listOfDrinksfilter.OrderByDescending(e => e.Price).FirstOrDefault().Price" Type="@SliderType.MinRange">
                         <SliderTicksData Placement="@Placement.None" LargeStep="20" SmallStep="5" ShowSmallTicks="false"></SliderTicksData>
@@ -32,9 +34,9 @@
                 </div>
             }
 
-
-            <MatButton Raised="true" @onclick="@((e) => showMore ^= true)">Show categorys</MatButton>
-            @if (showMore == true)
+            <MatButton Raised="true" @onclick="@((e) => isShowCategory ^= true)">Show categorys</MatButton>
+            <br />
+            @if (isShowCategory == true)
             {
                 <div class="drinkCategory">
                     @foreach (var item in listOfDrinks.GroupBy(e => e.Type).Select(g => g.First()).OrderBy(e => e.Type).ToList())
@@ -47,17 +49,44 @@
         }
 
 
+
     </div>
     <div class="drinkContainer">
         @foreach (var item in listOfDrinksfilter.Where(e => e.Price <= CurrentValue))
         {
-        <div class="mat-elevation-z10">
+            <div class="mat-elevation-z10" @onclick="@((e) => OpenDialog(item.ProductId))">
                 <h2>@item.ProductNameBold</h2>
-                <h3>@item.Price kr</h3>
+                <h3>@item.Price Kr</h3>
                 <h3>@item.AlcoholPercentage %</h3>
-                <img src=@($"https://product-cdn.systembolaget.se/productimages/{@item.ProductId}/{@item.ProductId}_200.png") onerror="this.src='https://www.systembolaget.se/content/assets/images/products/product-placeholder.png';" class="drinkImage" />
-        </div>
+                <img src=@($"https://product-cdn.systembolaget.se/productimages/{@item.ProductId}/{@item.ProductId}_200.png") 
+                 onerror="this.src='https://www.systembolaget.se/content/assets/images/products/product-placeholder.png';" class="drinkImage" />
+            </div>
 
+            @if (isDialogOpen == true && dialogId == item.ProductId)
+            {
+                <MatDialog @bind-IsOpen="@isDialogOpen">
+                    <MatDialogTitle> @item.ProductNameBold </MatDialogTitle>
+                    <MatDialogContent>
+                        <div class="modalContainer">
+                            <div class="detailBox">
+                                <i class="fas fa-money-bill-wave fa-2x" style="color:forestgreen"/><p>@item.Price Kr</p>
+                            </div>
+                            <div class="detailBox">
+                                <i class="fas fa-wine-glass-alt fa-2x" style="color:crimson"/><p>@item.Volume Ml</p>
+                            </div>
+                            <div class="detailBox">
+                                <i class="far fa-calendar-alt fa-2x" style="color:sandybrown"/><p>@item.SellStartDate.ToShortDateString()</p>
+                            </div>
+                            <div class="detailBox">
+                                <i class="fas fa-info-circle fa-2x" style="color:cornflowerblue" /><p>@item.Taste</p>
+                            </div>
+                            <img src=@($"https://product-cdn.systembolaget.se/productimages/{@item.ProductId}/{@item.ProductId}_200.png")
+                                 onerror="this.src='https://www.systembolaget.se/content/assets/images/products/product-placeholder.png';" class="drinkModalImage" />
+                        </div>
+
+                    </MatDialogContent>
+                                    </MatDialog>
+            }
         }
     </div>
 

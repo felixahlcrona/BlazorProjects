@@ -16,3 +16,12 @@ C:\Users\felix\source\repos\BlazorProjectsRepo\SubtitleCrawler\obj\Release\netco
 C:\Users\felix\source\repos\BlazorProjectsRepo\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.AssemblyInfo.cs
 C:\Users\felix\source\repos\BlazorProjectsRepo\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.dll
 C:\Users\felix\source\repos\BlazorProjectsRepo\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.pdb
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\bin\Release\netcoreapp3.1\SubtitleCrawler.deps.json
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\bin\Release\netcoreapp3.1\SubtitleCrawler.dll
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\bin\Release\netcoreapp3.1\SubtitleCrawler.pdb
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.csprojAssemblyReference.cache
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.AssemblyInfoInputs.cache
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.AssemblyInfo.cs
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.csproj.CoreCompileInputs.cache
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.dll
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Release\netcoreapp3.1\SubtitleCrawler.pdb

@@ -47,7 +47,6 @@ namespace BlazorServer.Pages
 
         public async Task SearchForMovie()
         {
-           // var x = await bolaget.GetAllProductsAsync();
             try
             {
                 loading = true;

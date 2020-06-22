@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using LazyCache;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,7 @@ namespace Api.Controllers
         {
             _clientFactory = clientFactory;
         }
-  
+
 
         [HttpGet]
         public async Task<List<DrinksModel>> GetAllProductsAsync()
@@ -32,8 +33,8 @@ namespace Api.Controllers
 
             if (response.IsSuccessStatusCode)
             {
+                
                 drinks = await response.Content.ReadFromJsonAsync<List<DrinksModel>>();
-               
             }
             else
             {
