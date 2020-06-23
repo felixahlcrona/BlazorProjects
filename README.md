@@ -3,7 +3,7 @@ https://felixahlcrona.azurewebsites.net/
 
 Having a blast coding with Blazor so trying it out to see what's possible. 
 
-Following projects are just for fun, usually dont late weekends with a few beers. Code quality 404
+Following projects are just for fun, usually done late weekends with a few beers. Code quality 404
 
 ## Subtitlefinder
 > Subtitlefinder, Crawls subscene and finds the most likely subtitle by using Levenshtein distance algorithm on the collected data. 
