@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/IHWJkjNw1iZCD2UzUT0Q8rH9Q0TEy84+F3d8qbMYXz9HT3/65zGKhcsOvF9OirKeGy+AWvMUjW1jUkJVl8RMQ==",
+  "dgSpecHash": "4XQzLk68Y4OpbpL8xqk6gy8vtNICQBzsThAm9DgYQ3n/tEMGJB7itffxlF2IkmG27Oehqdh5N+Q/DQxqeydBGQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\felix\\source\\repos\\BlazorNew\\Api\\Api.csproj",
   "expectedPackageFiles": [
@@ -14,9 +14,6 @@
     "C:\\Users\\felix\\.nuget\\packages\\system.net.http.json\\3.2.1\\system.net.http.json.3.2.1.nupkg.sha512",
     "C:\\Users\\felix\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.0\\system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
     "C:\\Users\\felix\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\felix\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\3.1.4\\microsoft.netcore.app.runtime.win-x86.3.1.4.nupkg.sha512",
-    "C:\\Users\\felix\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\3.1.4\\microsoft.windowsdesktop.app.runtime.win-x86.3.1.4.nupkg.sha512",
-    "C:\\Users\\felix\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\3.1.4\\microsoft.aspnetcore.app.runtime.win-x86.3.1.4.nupkg.sha512",
     "C:\\Users\\felix\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
   "logs": []

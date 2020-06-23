@@ -9,20 +9,19 @@ namespace BlazorServer.Pages
 {
     public class GraphBase : ComponentBase
     {
-        public StockObject[] OMX = GetTradingHistory("OMXS30").ToArray();
-        public StockObject[] CertShort = GetTradingHistory("CertShort").ToArray();
-        public StockObject[] CertLong = GetTradingHistory("CertLong").ToArray();
-        public StockObject[] FutureLong = GetTradingHistory("FutureLong").ToArray();
-        public StockObject[] FutureShort = GetTradingHistory("FutureShort").ToArray();
-
+        public StockObject[] OMX = GetTradingHistory(TradingInstrument.OMXS30.ToString()).ToArray();
+        public StockObject[] CertShort = GetTradingHistory(TradingInstrument.CertShort.ToString()).ToArray();
+        public StockObject[] CertLong = GetTradingHistory(TradingInstrument.CertLong.ToString()).ToArray();
+        public StockObject[] FutureLong = GetTradingHistory(TradingInstrument.FutureLong.ToString()).ToArray();
+        public StockObject[] FutureShort = GetTradingHistory(TradingInstrument.FutureShort.ToString()).ToArray();
         public int difference;
         public string pickDay;
 
-        public class DataItem
-        {
-            public DateTime Date { get; set; }
-            public double Revenue { get; set; }
-        }
+        //public class DataItem
+        //{
+        //    public DateTime Date { get; set; }
+        //    public double Revenue { get; set; }
+        //}
 
 
         public DateTime? value = DateTime.Now;
@@ -32,11 +31,11 @@ namespace BlazorServer.Pages
         public void Change(DateTime? value)
         {
             var selectedDate = DateTime.Parse(value.ToString()).ToShortDateString();
-            OMX = GetTradingHistory("OMXS30").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
-            CertShort = GetTradingHistory("CertShort").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
-            CertLong = GetTradingHistory("CertLong").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
-            FutureLong = GetTradingHistory("FutureLong").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
-            FutureShort = GetTradingHistory("FutureShort").ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
+            OMX = GetTradingHistory(TradingInstrument.OMXS30.ToString()).ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
+            CertShort = GetTradingHistory(TradingInstrument.CertShort.ToString()).ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
+            CertLong = GetTradingHistory(TradingInstrument.CertLong.ToString()).ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
+            FutureLong = GetTradingHistory(TradingInstrument.FutureLong.ToString()).ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
+            FutureShort = GetTradingHistory(TradingInstrument.FutureShort.ToString()).ToArray().Where(e => e.FetchDate.ToShortDateString() == selectedDate).ToArray();
             StateHasChanged();
         }
 

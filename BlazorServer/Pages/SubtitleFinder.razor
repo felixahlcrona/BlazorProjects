@@ -12,42 +12,43 @@
             <InfoBox />
         }
 
-        @if (newSearch == true)
+    
+    <div class="centerDiv">
+
+
+
+        <p class="animate__animated animate__bounceInLeft"></p>
+        <MatButton @onclick="@((e) => ExampleSearch("Interstellar.2014.1080p.BluRay.x264.DTS-RARBG"))">Give me an example</MatButton>
+
+        <br />
+        <MatTextField @bind-Value="movieInput" @oninput="@((e) => SetInput(e.Value.ToString()))" Required="true" Label="Movie title" Style="width: 85%; max-width: 500px;"></MatTextField>
+        <br />
+
+        @if (movieInput?.Length > 2)
+        {    
+        <MatButton @onclick="@((e) => SearchForMovie())">Search</MatButton>
+        }
+
+        @if (errorMessage != null)
+        {
+            <h1 class="animate__animated animate__swing">@errorMessage</h1>
+        }
+
+
+        @*<MatButton @onclick="@((e) => displayExample = true)">Show examples</MatButton>
+        @if (displayExample == true)
         {
             <div class="centerDiv">
-
-
-
-                <p class="animate__animated animate__bounceInLeft"></p>
-                @*<MatButton @onclick="@((e) => SetInput("Tropic.Thunder.Unrated.2008.BluRay.DTS.x264.dxva-EuReKA"))">Example</MatButton>*@
-
-                <br />
-                <MatTextField @bind-Value="movieInput" @oninput="@((e) => SetInput(e.Value.ToString()))" Required="true" Label="Movie title"></MatTextField>
-                <br />
-                <MatButton @onclick="@((e) => SearchForMovie())">Search</MatButton>
-
-                @if (errorMessage != null)
-                {
-                    <h1 class="animate__animated animate__swing">@errorMessage</h1>
-                }
-
-
-                <MatButton @onclick="@((e) => displayExample = true)">Show examples</MatButton>
-                @if (displayExample == true)
-                {
-                    <div class="centerDiv">
-                        <MatSelectItem ValueChanged="(string e) => ClickHandlerEX(e)" HelperText="Example movies" Items="@exampleMovies"></MatSelectItem>
-                    </div>
-                }
-
-
-                @if (loading == true)
-                {
-                    <LoadingIcon/>
-                }
+                <MatSelectItem ValueChanged="(string e) => ClickHandlerEX(e)" HelperText="Example movies" Items="@exampleMovies"></MatSelectItem>
             </div>
+        }*@
+
+
+        @if (loading == true)
+        {
+            <LoadingIcon />
         }
-        <MatButton @onclick="@((e) => newSearch = true)">Search</MatButton>
+    </div>
 
         <Poster movieList="@movieList"></Poster>
 

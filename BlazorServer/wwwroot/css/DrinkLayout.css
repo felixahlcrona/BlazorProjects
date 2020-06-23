@@ -33,6 +33,7 @@
     width: 90%;
     margin: 10px;
     padding: 10px;
+    cursor: pointer;
 }
     .mat-elevation-z10:hover {
         background-color: #f3f3f3;

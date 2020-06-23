@@ -86,17 +86,22 @@ namespace BlazorServer.Pages
             }
         }
 
+        public async Task ExampleSearch(string e)
+        {
+            movieInput = e;
+            await SearchForMovie();
 
+        }
         public async Task SetInput(string e)
         {
             movieInput = e;
 
         }
-        public async Task ClickHandlerEX(string newMessage)
-        {
-            movieInput = newMessage;
-            await SearchForMovie();
-        }
+        //public async Task ClickHandlerEX(string newMessage)
+        //{
+        //    movieInput = newMessage;
+        //    await SearchForMovie();
+        //}
 
     }
 
