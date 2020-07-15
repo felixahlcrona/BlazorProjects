@@ -64,6 +64,18 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[3.1.2, 3.1.2]"
+            },
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
+              "version": "[3.1.4, 3.1.4]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x86",
+              "version": "[3.1.4, 3.1.4]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
+              "version": "[3.1.4, 3.1.4]"
             }
           ],
           "frameworkReferences": {
@@ -75,6 +87,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x86": {
+          "#import": []
         }
       }
     }
