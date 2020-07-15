@@ -16,16 +16,7 @@ namespace BlazorServer.Pages
         public StockObject[] FutureShort = GetTradingHistory(TradingInstrument.FutureShort.ToString()).ToArray();
         public int difference;
         public string pickDay;
-
-        //public class DataItem
-        //{
-        //    public DateTime Date { get; set; }
-        //    public double Revenue { get; set; }
-        //}
-
-
         public DateTime? value = DateTime.Now;
-
         public Dictionary<DateTime, string> events = new Dictionary<DateTime, string>();
 
         public void Change(DateTime? value)

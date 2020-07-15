@@ -7,14 +7,16 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.DependencyInjection;
 namespace BlazorServer.Pages
 {
     public class SubtitleFinderBase : ComponentBase
     {
+        [Inject]
+        protected ISubtitleClass subtitle { get; set; }
 
         public MovieClass movie = new MovieClass();
-        public SubtitleClass subtitle = new SubtitleClass();
+        //public SubtitleClass subtitle = new SubtitleClass();
         public IEnumerable<MovieClass> movieList = new List<MovieClass>();
         public MovieClass selectedMovieDetails = new MovieClass();
         public string movieInput;
@@ -47,6 +49,7 @@ namespace BlazorServer.Pages
 
         public async Task SearchForMovie()
         {
+
             try
             {
                 loading = true;

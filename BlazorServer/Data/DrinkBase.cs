@@ -15,8 +15,10 @@ namespace BlazorServer.Pages
 {
     public class DrinkBase : ComponentBase
     {
+        [Inject]
+        protected LzyCache _lzyCache { get; set; }
+
         public IEnumerable<DrinksModel> listOfDrinks = new List<DrinksModel>();
-        private LzyCache _lzyCache = new LzyCache(new SystemBolaget(new HttpClient()));
         public IEnumerable<DrinksModel> listOfDrinksfilter = new List<DrinksModel>();
 
         public bool isLoading;

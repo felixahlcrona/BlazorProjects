@@ -1,10 +1,18 @@
 //using BlazorServer.Data;
+using Api;
+using Api.Controllers;
+using BlazorServer.Pages;
+using CarInfo;
+using EasySubFinder.Entites;
+using LazyCache;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SubtitleCrawler;
 using Syncfusion.Blazor;
+using System.Net.Http;
 
 namespace BlazorServer
 {
@@ -25,8 +33,13 @@ namespace BlazorServer
             services.AddServerSideBlazor();
             services.AddSyncfusionBlazor();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjcxMTM4QDMxMzgyZTMxMmUzMEUwVHZVTWR3RFBYSnJQaXk2eUNoTWROWURNaWhoL2dNTHZhTEQ4azFJbWc9");
-            //services.AddSingleton<WeatherForecastService>();
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
+            services.AddTransient<ISubtitleClass, SubtitleClass>();
+            services.AddTransient<HttpClient>();
+            services.AddTransient<IAppCache, CachingService>();
+            services.AddTransient<SystemBolaget>();
+            services.AddTransient<Carfinderinfo>();
+            services.AddSingleton<LzyCache>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

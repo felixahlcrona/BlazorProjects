@@ -1,0 +1,9 @@
+C:\Users\felix\source\repos\BlazorNew\CarInfo\obj\Debug\netcoreapp3.1\CarInfo.csprojAssemblyReference.cache
+C:\Users\felix\source\repos\BlazorNew\CarInfo\obj\Debug\netcoreapp3.1\CarInfo.AssemblyInfoInputs.cache
+C:\Users\felix\source\repos\BlazorNew\CarInfo\obj\Debug\netcoreapp3.1\CarInfo.AssemblyInfo.cs
+C:\Users\felix\source\repos\BlazorNew\CarInfo\obj\Debug\netcoreapp3.1\CarInfo.csproj.CoreCompileInputs.cache
+C:\Users\felix\source\repos\BlazorNew\CarInfo\bin\Debug\netcoreapp3.1\CarInfo.deps.json
+C:\Users\felix\source\repos\BlazorNew\CarInfo\bin\Debug\netcoreapp3.1\CarInfo.dll
+C:\Users\felix\source\repos\BlazorNew\CarInfo\bin\Debug\netcoreapp3.1\CarInfo.pdb
+C:\Users\felix\source\repos\BlazorNew\CarInfo\obj\Debug\netcoreapp3.1\CarInfo.dll
+C:\Users\felix\source\repos\BlazorNew\CarInfo\obj\Debug\netcoreapp3.1\CarInfo.pdb
