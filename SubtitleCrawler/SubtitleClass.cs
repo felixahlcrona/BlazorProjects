@@ -15,13 +15,6 @@ namespace SubtitleCrawler
 
     public class SubtitleClass : ISubtitleClass
     {
-        //private static readonly HttpClient client = new HttpClient();
-
-
-        //    https://m.media-amazon.com/images/M/MV5BNDc1ZTlmOWUtNDY2YS00OGU5LTg2MTYtYTk2MmQzMGE2NzUwXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_SX600.jpg
-        //    http://www.omdbapi.com/-
-        //    <a target = "_blank" class="imdb" href="https://www.imdb.com/title/tt3794354">Imdb</a>
-        // http://www.omdbapi.com/?i=tt0944947&apikey=921118b4&
         readonly HttpClient client;
         public SubtitleClass(HttpClient client)
         {

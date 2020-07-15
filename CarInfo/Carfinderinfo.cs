@@ -19,8 +19,6 @@ namespace CarInfo
 
         public async Task<CarModel> RegLookUp(string regNmr)
         {
-            //hzp07s
-
             HtmlDocument _htmlDoc = new HtmlDocument();
             _htmlDoc.LoadHtml($"https://biluppgifter.se/fordon/{regNmr}#history-anchor-v2");
 
@@ -104,7 +102,7 @@ namespace CarInfo
             {
                 return "Okänt trafikstatus";
             }
-           
+
         }
         private static string ExtractCarModel(string query)
         {
@@ -129,7 +127,7 @@ namespace CarInfo
             {
                 return "Okänd ägandestatus";
             }
-            
+
         }
         private static string CleanString(string query)
         {

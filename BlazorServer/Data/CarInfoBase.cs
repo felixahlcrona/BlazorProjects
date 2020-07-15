@@ -49,7 +49,6 @@ namespace BlazorServer.Pages
         public async Task SetInput(string e)
         {
             regInput = e;
-
         }
 
     }
