@@ -19,7 +19,7 @@ namespace BlazorServer.Pages
         public bool IsLoading;
 
 
-        public async Task SearchForMovie()
+        public async Task SearchForCar()
         {
             try
             {

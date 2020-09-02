@@ -97,4 +97,3 @@ C:\Users\felix\source\repos\BlazorNew\AvanzaScraper\bin\Debug\netcoreapp3.1\runt
 C:\Users\felix\source\repos\BlazorNew\AvanzaScraper\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\felix\source\repos\BlazorNew\AvanzaScraper\obj\Debug\netcoreapp3.1\AvanzaScraper.csproj.CopyComplete
 C:\Users\felix\source\repos\BlazorNew\AvanzaScraper\obj\Debug\netcoreapp3.1\AvanzaScraper.genruntimeconfig.cache
-C:\Users\felix\source\repos\BlazorNew\AvanzaScraper\obj\Debug\netcoreapp3.1\AvanzaScraper.csprojAssemblyReference.cache
