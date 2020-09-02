@@ -27,6 +27,7 @@ namespace Api.Controllers
         public async Task<List<DrinksModel>> GetAllProductsAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://api-extern.systembolaget.se/product/v1/product");
+            _clientFactory.DefaultRequestHeaders.Clear();
             _clientFactory.DefaultRequestHeaders.Add("Host", "api-extern.systembolaget.se");
             _clientFactory.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7bc3f02b4c574e74aeb2cbff9a3c1258");
             HttpResponseMessage response = await _clientFactory.SendAsync(request);
