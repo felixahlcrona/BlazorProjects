@@ -5,7 +5,7 @@
 
     <div class="centerDiv">
 
-        <i class="fas fa-question fa-3x" @onmouseover="@((e) => displayInfo = true)" @onmouseout="@((e) => displayInfo = false)"></i>
+        <i class="fas fa-question fa-3x" @onclick="@((e) => displayInfo = true)" @onmouseout="@((e) => displayInfo = false)"></i>
         <br />
         @if (displayInfo == true)
         {
@@ -58,7 +58,7 @@
         <br />
         @foreach (var item in movieList.Where(e => e.SubtitleLanguage == language))
         {
-            <div class="movieCard" @onmouseover="@((e) => GetSelectedMovieDetails(item))">
+            <div class="movieCard" @onclick="@((e) => GetSelectedMovieDetails(item))">
                 <h1>@item.RelevanceScore % Match</h1>
 
 

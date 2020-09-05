@@ -37,15 +37,18 @@ namespace BlazorServer
             services.AddSyncfusionBlazor();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjcxMTM4QDMxMzgyZTMxMmUzMEUwVHZVTWR3RFBYSnJQaXk2eUNoTWROWURNaWhoL2dNTHZhTEQ4azFJbWc9");
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
-            services.AddTransient<ISubtitleClass, SubtitleClass>();
             services.AddTransient<HttpClient>();
             services.AddTransient<IAppCache, CachingService>();
-            services.AddTransient<SystemBolaget>();
             services.AddTransient<Carfinderinfo>();
-            services.AddSingleton<LzyCache>();
+            //services.AddSingleton<LzyCache>();
 
+            //SystemBolaget
             services.AddTransient<ISystemBolagetService,SystemBolagetService>();
             services.AddTransient<ISystemBolagetRepository,SystemBolagetRepository>();
+
+            //SubtitleFinder
+            services.AddTransient<ISubtitleFinderService, SubtitleFinderService>();
+            services.AddTransient<ISubtitleFinderRepository, SubtitleFinderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

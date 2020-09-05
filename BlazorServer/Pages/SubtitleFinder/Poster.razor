@@ -1,9 +1,9 @@
 ﻿@page "/Poster"
 @inherits BlazorServer.Pages.SubtitleFinderBase
-@using EasySubFinder.Entites
+@using BlazorServer.Models
 
 @code{
-    [Parameter] public IEnumerable<MovieClass> movieList { get; set; }
+    [Parameter] public IEnumerable<SubtitleFinderModel> movieList { get; set; }
 }
 
 

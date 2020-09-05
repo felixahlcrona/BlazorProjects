@@ -26,14 +26,17 @@ namespace SubtitleCrawler
             HtmlDocument _htmlDoc = new HtmlDocument();
             _htmlDoc.LoadHtml($"https://subscene.com/{e.Url}");
             var tes = $"https://subscene.com/{e.Url}";
-            var responseSubtitels = await client.GetAsync(tes);
-            var responseStringSubtiels = await responseSubtitels.Content.ReadAsStringAsync();
+            var responseSubtitles = await client.GetAsync(tes);
+            var responseStringSubtiels = await responseSubtitles.Content.ReadAsStringAsync();
             _htmlDoc.LoadHtml(responseStringSubtiels);
 
-            var ratingValue = "";
-            var ratingCount = "";
-            var downloadsCount = "";
-            var downloadLink = "";
+
+
+            string ratingValue;
+            string ratingCount;
+            string downloadsCount;
+            string downloadLink;
+
             try
             {
                 ratingValue = _htmlDoc.DocumentNode.SelectNodes("//*[@itemprop='ratingValue']").FirstOrDefault().ChildNodes.FirstOrDefault().InnerText;
@@ -44,10 +47,10 @@ namespace SubtitleCrawler
             }
             catch
             {
-                ratingValue = "";
-                ratingCount = "";
-                downloadsCount = "";
-                downloadLink = "";
+                ratingValue = string.Empty;
+                ratingCount = string.Empty;
+                downloadsCount = string.Empty;
+                downloadLink = string.Empty;
             }
 
 
@@ -94,29 +97,6 @@ namespace SubtitleCrawler
             }
 
         }
-
-
-        //static async Task<MovieClass> GetMoviePosterIMBD(string moviePage)
-        //{
-        //    _htmlDoc2.LoadHtml("http://www.omdbapi.com/?i=tt0944947&apikey=921118b4&");
-        //    var res = $"http://www.omdbapi.com/?i=tt0944947&apikey=921118b4&";
-        //    var responseSubtitels = await client.GetAsync(res);
-
-
-        //    var response = await client.PostAsync($"https://subscene.com/{moviePage}", null);
-        //    var responseString = await response.Content.ReadAsStringAsync();
-        //    _htmlDoc.LoadHtml(responseString);
-
-        //    var imdbId = _htmlDoc.DocumentNode.SelectNodes("//*[@class='poster']").FirstOrDefault().ChildNodes.ElementAt(1).Attributes.FirstOrDefault().Value;
-
-        //    var responseStringSubtiels = await responseSubtitels.Content.ReadAsStringAsync();
-        //    _htmlDoc2.LoadHtml(responseStringSubtiels);
-
-        //    MovieClass poster = JsonConvert.DeserializeObject<MovieClass>(responseStringSubtiels);
-
-
-        //    return poster;
-        //}
 
 
         public async Task<IEnumerable<MovieClass>> SubtitleSearch(string searchedMovieTitle)

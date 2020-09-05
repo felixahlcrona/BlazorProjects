@@ -8,22 +8,25 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using BlazorServer.Services;
+using BlazorServer.Models;
+
 namespace BlazorServer.Pages
 {
     public class SubtitleFinderBase : ComponentBase
     {
-        [Inject]
-        protected ISubtitleClass subtitle { get; set; }
 
-        public MovieClass movie = new MovieClass();
-        //public SubtitleClass subtitle = new SubtitleClass();
-        public IEnumerable<MovieClass> movieList = new List<MovieClass>();
-        public MovieClass selectedMovieDetails = new MovieClass();
+        [Inject]
+        protected ISubtitleFinderService _subtitleFinderService { get; set; }
+        public SubtitleFinderModel movie = new SubtitleFinderModel();
+        public IEnumerable<SubtitleFinderModel> movieList = new List<SubtitleFinderModel>();
+        public SubtitleFinderModel selectedMovieDetails = new SubtitleFinderModel();
+
         public string movieInput;
         public string errorMessage;
         public bool displayInfo;
         public bool loading;
-        public string language="English";
+        public string language = "English";
         public bool displayExample;
         public int Counter = 1;
         public bool newSearch;
@@ -36,15 +39,10 @@ namespace BlazorServer.Pages
             "Extraction.2020.HDRip.XviD.AC3-EVO[TGx]",
             "Ad.Astra.2019.HDRip.XviD.AC3-EVO[TGx]",
             "Knives.Out.2019.DVDScr.XVID.AC3.Hive-CM8",
-            "Captain Marvel 2019 NEW HD-TS X264 AC3-SeeHD",
             "Ready.or.Not.2019.DVDRip.XviD.AC3-EVO[TGx]",
             "Scoob.2020.HDRip.XviD.AC3-EVO[TGx]",
             "Mortal.Kombat.Legends.Scorpions.Revenge.2020.HDRip.XviD.AC3-EVO"
         };
-
- 
- 
-
 
 
         public async Task SearchForMovie()
@@ -53,19 +51,19 @@ namespace BlazorServer.Pages
             try
             {
                 loading = true;
-                movieList = await subtitle.SubtitleSearch(movieInput);
+                movieList = await _subtitleFinderService.SubtitleSearch(movieInput);
                 movieInput = "";
                 loading = false;
                 newSearch = false;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 movieInput = "";
                 loading = false;
                 language = "English";
                 await renderErrorMessage();
             }
-            
+
         }
 
         public async Task renderErrorMessage()
@@ -74,14 +72,14 @@ namespace BlazorServer.Pages
             StateHasChanged();
             await Task.Delay(2000);
             errorMessage = null;
-           
+
         }
-        public async Task GetSelectedMovieDetails(MovieClass movie)
+        public async Task GetSelectedMovieDetails(SubtitleFinderModel movie)
         {
             try
             {
 
-            selectedMovieDetails = await subtitle.GetMovieDetails(movie);
+                selectedMovieDetails = await _subtitleFinderService.GetMovieDetails(movie);
             }
             catch (Exception e)
             {
@@ -91,20 +89,17 @@ namespace BlazorServer.Pages
 
         public async Task ExampleSearch(string e)
         {
-            movieInput = e;
-            await SearchForMovie();
+            Random rnd = new Random();
+            int random = rnd.Next(exampleMovies.Count);
+            movieInput = (string)exampleMovies[random];
 
+            await SearchForMovie();
         }
         public async Task SetInput(string e)
         {
             movieInput = e;
 
         }
-        //public async Task ClickHandlerEX(string newMessage)
-        //{
-        //    movieInput = newMessage;
-        //    await SearchForMovie();
-        //}
 
     }
 
