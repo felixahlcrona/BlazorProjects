@@ -1,6 +1,8 @@
 ﻿using Api;
 using Api.Controllers;
 using AvanzaScraper;
+using BlazorServer.Models;
+using BlazorServer.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
@@ -15,11 +17,14 @@ namespace BlazorServer.Pages
 {
     public class DrinkBase : ComponentBase
     {
-        [Inject]
-        protected LzyCache _lzyCache { get; set; }
+        //[Inject]
+        //protected LzyCache _lzyCache { get; set; }
 
-        public IEnumerable<DrinksModel> listOfDrinks = new List<DrinksModel>();
-        public IEnumerable<DrinksModel> listOfDrinksfilter = new List<DrinksModel>();
+        [Inject]
+        protected ISystemBolagetService _systemBolagetRepo { get; set; }
+
+        public IEnumerable<SystemBolagetModel> listOfDrinks = new List<SystemBolagetModel>();
+        public IEnumerable<SystemBolagetModel> listOfDrinksfilter = new List<SystemBolagetModel>();
 
         public bool isLoading;
         public bool isShowCategory;
@@ -40,7 +45,7 @@ namespace BlazorServer.Pages
         protected override async Task OnInitializedAsync()
         {
             isLoading = true;
-            listOfDrinks = await _lzyCache.GetAllProductsAsync();
+            listOfDrinks = await _systemBolagetRepo.GetAllProductsAsync();
             isLoading = false;
         }
 
@@ -62,10 +67,10 @@ namespace BlazorServer.Pages
             isPriceFiltering = false;
         }
 
-        
-       
 
-     
+
+
+
     }
 
 

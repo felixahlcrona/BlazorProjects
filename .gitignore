@@ -316,3 +316,8 @@ __pycache__/
 /src/packages/
 /src/GitTfsTest.dll.xml
 /src/.build
+/Repository/Properties/Resource.Designer.cs
+/Repository/Properties/Resource.resx
+/GoogleCrawler.cs
+/NiceToKnow.cs
+/Googlecrawler.txt

@@ -1,9 +1,9 @@
 ﻿@page "/TypeAhead"
+@using BlazorServer.Models;
 <BlazoredTypeahead SearchMethod="DrinkSearch"
                    @bind-Value="SelectedDrink"
                    MinimumLength="0"
-                   Debounce="100"
-                   >
+                   Debounce="100">
     <SelectedTemplate>
         @context
     </SelectedTemplate>
@@ -11,7 +11,7 @@
         <div class="typeAheadInput">
             <img src=@($"https://product-cdn.systembolaget.se/productimages/{ImageRef(context)}/{ImageRef(context)}_200.png")
                  onerror="this.src='https://www.systembolaget.se/content/assets/images/products/product-placeholder.png';" class="typeAheadImage" />
-            <h3>@context</h3> 
+            <h3>@context</h3>
         </div>
     </ResultTemplate>
 </BlazoredTypeahead>
@@ -30,11 +30,11 @@
 
     [Parameter] public EventCallback<string> setDrink { get; set; }
     private string SelectedDrink;
-    [Parameter] public IEnumerable<Api.DrinksModel> drinkList { get; set; }
+    [Parameter] public IEnumerable<SystemBolagetModel> drinkList { get; set; }
 
     private async Task<IEnumerable<string>> DrinkSearch(string searchText)
     {
-        var res = drinkList.GroupBy(e => e.ProductNameBold).Select(g => g.First()).OrderBy(e => e.ProductNameBold).Select(v=>v.ProductNameBold).ToList();
+        var res = drinkList.GroupBy(e => e.ProductNameBold).Select(g => g.First()).OrderBy(e => e.ProductNameBold).Select(v => v.ProductNameBold).ToList();
         return await Task.FromResult(res.Where(x => x.ToLower().Contains(searchText.ToLower())).ToList());
     }
 

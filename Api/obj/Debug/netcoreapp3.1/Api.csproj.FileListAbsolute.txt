@@ -44,3 +44,4 @@ C:\Users\felix\source\repos\BlazorNew\Api\obj\Debug\netcoreapp3.1\Api.genruntime
 C:\Users\felix\source\repos\BlazorNew\Api\bin\Debug\netcoreapp3.1\LazyCache.dll
 C:\Users\felix\source\repos\BlazorNew\Api\obj\Debug\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
 C:\Users\felix\source\repos\BlazorNew\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\felix\source\repos\BlazorNew\Api\obj\Debug\netcoreapp3.1\Api.csprojAssemblyReference.cache

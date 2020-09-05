@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace BlazorServer.Pages
 {
     public class GraphBase : ComponentBase
@@ -33,13 +34,13 @@ namespace BlazorServer.Pages
 
         public static List<StockObject> GetTradingHistory(string ticker)
         {
-            var tradingData = Repository.GetData().Where(e => e.Name == ticker).ToList();
+            var tradingData = AvanzaRepo.GetData().Where(e => e.Name == ticker).ToList();
             return tradingData;
         }
 
         public List<string> GetTradingDates()
         {
-            var tradingData = Repository.GetTradingDays().Select(e => e.FetchDate.ToString()).ToList();
+            var tradingData = AvanzaRepo.GetTradingDays().Select(e => e.FetchDate.ToString()).ToList();
 
             return tradingData;
 

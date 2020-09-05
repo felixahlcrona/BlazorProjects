@@ -11,7 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubtitleCrawler", "Subtitle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServer", "BlazorServer\BlazorServer.csproj", "{26AE2973-0D7C-408C-BDBB-0B4943043639}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarInfo", "CarInfo\CarInfo.csproj", "{A330C09E-FBBF-43A6-AA66-7F02CBB20F34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarInfo", "CarInfo\CarInfo.csproj", "{A330C09E-FBBF-43A6-AA66-7F02CBB20F34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC0E0A75-C8C3-420A-BE39-D67A70225FE1}"
+	ProjectSection(SolutionItems) = preProject
+		GoogleCrawler.cs = GoogleCrawler.cs
+		Googlecrawler.txt = Googlecrawler.txt
+		NiceToKnow.cs = NiceToKnow.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3F48DC2B-9C3A-4AFD-929D-EEB239F829D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +48,10 @@ Global
 		{A330C09E-FBBF-43A6-AA66-7F02CBB20F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A330C09E-FBBF-43A6-AA66-7F02CBB20F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A330C09E-FBBF-43A6-AA66-7F02CBB20F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F48DC2B-9C3A-4AFD-929D-EEB239F829D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F48DC2B-9C3A-4AFD-929D-EEB239F829D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F48DC2B-9C3A-4AFD-929D-EEB239F829D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F48DC2B-9C3A-4AFD-929D-EEB239F829D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

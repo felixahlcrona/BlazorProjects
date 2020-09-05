@@ -32,3 +32,4 @@ C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Debug\netcoreapp3.1\Su
 C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Debug\netcoreapp3.1\SubtitleCrawler.csproj.CoreCompileInputs.cache
 C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Debug\netcoreapp3.1\SubtitleCrawler.dll
 C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Debug\netcoreapp3.1\SubtitleCrawler.pdb
+C:\Users\felix\source\repos\BlazorNew\SubtitleCrawler\obj\Debug\netcoreapp3.1\SubtitleCrawler.csprojAssemblyReference.cache

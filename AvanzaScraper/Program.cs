@@ -171,7 +171,7 @@ namespace AvanzaScraper
                 totalTraders.Add(Int32.Parse(tradingCount));
 
             }
-            Repository.InsertStockData(new StockObject() { Name = stockName, Type = stockDirection, Price = totalTraders.Sum(), FetchDate = startDate });
+            AvanzaRepo.InsertStockData(new StockObject() { Name = stockName, Type = stockDirection, Price = totalTraders.Sum(), FetchDate = startDate });
 
 
             _tradingLinks.Clear();
@@ -201,7 +201,7 @@ namespace AvanzaScraper
 
 
                 }
-                Repository.InsertStockData(new StockObject() { Name = stockName, Type = stockDirection, Price = totalTraders.Sum(), FetchDate = startDate });
+                AvanzaRepo.InsertStockData(new StockObject() { Name = stockName, Type = stockDirection, Price = totalTraders.Sum(), FetchDate = startDate });
 
                 _tradingLinks.Clear();
                 return 0;
@@ -255,7 +255,7 @@ namespace AvanzaScraper
             indexPrice = indexPrice.Remove(5);
             indexPrice = indexPrice.Replace(",", "");
             indexPrice = Regex.Replace(indexPrice, @"\s+", "");
-            Repository.InsertStockData(new StockObject() { Name = "OMXS30", Type = "OMXS30", Price = Convert.ToInt32(indexPrice), FetchDate = startDate });
+            AvanzaRepo.InsertStockData(new StockObject() { Name = "OMXS30", Type = "OMXS30", Price = Convert.ToInt32(indexPrice), FetchDate = startDate });
 
             return 0;
         }

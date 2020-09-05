@@ -5,6 +5,7 @@ using BlazorServer.Pages;
 using CarInfo;
 using EasySubFinder.Entites;
 using LazyCache;
+using Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using SubtitleCrawler;
 using Syncfusion.Blazor;
 using System.Net.Http;
+using Repository.Repository;
+using BlazorServer.Services;
 
 namespace BlazorServer
 {
@@ -40,6 +43,9 @@ namespace BlazorServer
             services.AddTransient<SystemBolaget>();
             services.AddTransient<Carfinderinfo>();
             services.AddSingleton<LzyCache>();
+
+            services.AddTransient<ISystemBolagetService,SystemBolagetService>();
+            services.AddTransient<ISystemBolagetRepository,SystemBolagetRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
