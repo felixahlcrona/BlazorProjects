@@ -11,5 +11,6 @@ namespace SubtitleCrawler
         Task<MovieClass> GetMovieDetails(MovieClass e);
         Task<string> GetMoviePoster(string moviePage);
         Task<IEnumerable<MovieClass>> SubtitleSearch(string searchedMovieTitle);
+
     }
 }
