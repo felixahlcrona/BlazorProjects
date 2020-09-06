@@ -6,9 +6,7 @@ namespace Repository.Repository
 {
     public interface ISubtitleFinderRepository
     {
-        Task<HtmlDocument> GetAllSubtitlesForMovie(string movieUrl);
-        Task<HtmlDocument> GetMovieDetails(SubtitleFinderEntity e);
-        Task<HtmlDocument> GetMoviePoster(string moviePage);
-        Task<HtmlDocument> MostPlauisableMovie(string searchQuery);
+        Task<HtmlDocument> ExecuteGetRequest(string url);
+        Task<HtmlDocument> ExecutePostRequest(string url);
     }
 }

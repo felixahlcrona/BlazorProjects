@@ -47,7 +47,7 @@ namespace BlazorServer.Services
         // kolla över distinkta subtitles, finns flera på subscene med samma namn?
         private async Task<List<HtmlNode>> GetAllSubtitlesForMovie(string movieUrl)
         {
-            var htmlDoc = await _subtitleFinderRepo.GetAllSubtitlesForMovie(movieUrl);
+            var htmlDoc = await _subtitleFinderRepo.ExecuteGetRequest($"https://subscene.com/{movieUrl}");
 
             var subtitleUrls = htmlDoc.DocumentNode.SelectNodes("//*[@class='a1']");
 
@@ -61,7 +61,7 @@ namespace BlazorServer.Services
 
         private async Task<string> MostPlauisableMovie(string searchQuery)
         {
-            var htmlDoc = await _subtitleFinderRepo.MostPlauisableMovie(searchQuery);
+            var htmlDoc = await _subtitleFinderRepo.ExecutePostRequest($"https://subscene.com/subtitles/searchbytitle?query={searchQuery}");
 
             var elementsOfMovies = htmlDoc.DocumentNode.SelectNodes("//*[@id='left']/div/div/ul[1]/li/div[1]/a");
             var plausibleMovieTitles = elementsOfMovies.Select(e => CalculateMostPlausibleMovieTitle(searchQuery, e.InnerText)).OrderByDescending(e => e.Item1);
@@ -75,7 +75,7 @@ namespace BlazorServer.Services
         {
             try
             {
-                var htmlDoc = await _subtitleFinderRepo.GetMoviePoster(moviePage);
+                var htmlDoc = await _subtitleFinderRepo.ExecuteGetRequest($"https://subscene.com/{moviePage}");
 
                 var posterImage = htmlDoc.DocumentNode.SelectNodes("//*[@class='poster']").FirstOrDefault().ChildNodes.ElementAt(1).Attributes.FirstOrDefault().Value;
                 // higher quality images.
@@ -96,7 +96,7 @@ namespace BlazorServer.Services
             string downloadsCount;
             string downloadLink;
 
-            var htmlDoc = await _subtitleFinderRepo.GetMovieDetails(Mapper.Map(selectedMovie).ToANew<SubtitleFinderEntity>());
+            var htmlDoc = await _subtitleFinderRepo.ExecuteGetRequest($"https://subscene.com/{selectedMovie.Url}");
 
             try
             {

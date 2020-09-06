@@ -22,53 +22,26 @@ namespace Repository.Repository
         }
 
 
-        public async Task<HtmlDocument> GetMovieDetails(SubtitleFinderEntity e)
+        public async Task<HtmlDocument> ExecuteGetRequest(string url)
         {
             HtmlDocument _htmlDoc = new HtmlDocument();
-            _htmlDoc.LoadHtml($"https://subscene.com/{e.Url}");
-            var tes = $"https://subscene.com/{e.Url}";
-            var responseSubtitles = await _clientFactory.GetAsync(tes);
-            var responseStringSubtiels = await responseSubtitles.Content.ReadAsStringAsync();
-            _htmlDoc.LoadHtml(responseStringSubtiels);
-
-            return _htmlDoc;
-
-        }
-
-
-        public async Task<HtmlDocument> GetMoviePoster(string moviePage)
-        {
-
-            HtmlDocument _htmlDoc = new HtmlDocument();
-            var response = await _clientFactory.GetAsync($"https://subscene.com/{moviePage}");
-            var responseString = await response.Content.ReadAsStringAsync();
-            _htmlDoc.LoadHtml(responseString);
-
-            return _htmlDoc;
-
-        }
-
-
-        public async Task<HtmlDocument> MostPlauisableMovie(string searchQuery)
-        {
-            HtmlDocument _htmlDoc = new HtmlDocument();
-            var response = await _clientFactory.PostAsync($"https://subscene.com/subtitles/searchbytitle?query={searchQuery}", null);
-            var responseString = await response.Content.ReadAsStringAsync();
-            _htmlDoc.LoadHtml(responseString);
+            var response = await _clientFactory.GetAsync(url);
+            var content = await response.Content.ReadAsStringAsync();
+            _htmlDoc.LoadHtml(content);
 
             return _htmlDoc;
         }
 
-
-        public async Task<HtmlDocument> GetAllSubtitlesForMovie(string movieUrl)
+        public async Task<HtmlDocument> ExecutePostRequest(string url)
         {
             HtmlDocument _htmlDoc = new HtmlDocument();
-            var request = await _clientFactory.GetAsync($"https://subscene.com/{movieUrl}");
-            var response = await request.Content.ReadAsStringAsync();
-            _htmlDoc.LoadHtml(response);
+            var response = await _clientFactory.PostAsync(url,null);
+            var content = await response.Content.ReadAsStringAsync();
+            _htmlDoc.LoadHtml(content);
 
             return _htmlDoc;
         }
+
     }
 }
 
