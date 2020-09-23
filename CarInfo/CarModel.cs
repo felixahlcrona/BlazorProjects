@@ -9,10 +9,11 @@ namespace CarInfo
         public string YearlyTax { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
-        public string traffic_status { get; set; }
-        public string is_leased { get; set; }
-        public IEnumerable<OwnerModel> owners { get; set; }
-        public IEnumerable<Car> history { get; set; }
+        public string Traffic_status { get; set; }
+        public string Is_leased { get; set; }
+        public string StolenStatus { get; set; }
+        public IEnumerable<OwnerModel> Owners { get; set; }
+        public IEnumerable<Car> History { get; set; }
 
     }
     public partial class CarHistory

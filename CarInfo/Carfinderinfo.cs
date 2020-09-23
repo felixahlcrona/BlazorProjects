@@ -36,25 +36,27 @@ namespace CarInfo
 
 
             var csrfToken = _htmlDoc.DocumentNode.SelectNodes("/html/head/meta[4]").FirstOrDefault().Attributes.ElementAt(1).Value;
-            var cookie = response.Headers.Where(e => e.Key.Contains("Set-Cookie")).FirstOrDefault().Value.Where(e=>e.Contains("biluppgifter_session")).FirstOrDefault();
+            var cookie = response.Headers.Where(e => e.Key.Contains("Set-Cookie")).FirstOrDefault().Value.Where(e => e.Contains("biluppgifter_session")).FirstOrDefault();
 
-
+ 
             var internalUserId = ExtractInternalUserId(content);
             var history = await ExtractCarHistory(internalUserId, csrfToken, cookie);
             var carModel = ExtractPersonalInfo(history);
-            carModel.YearlyTax = ExtractYearlyTax(content);
+            carModel.YearlyTax = ExtractYearlyTaxes(_htmlDoc);
+            carModel.StolenStatus = ExtractStolenStatus(_htmlDoc);
+            carModel.Is_leased = ExtractIsLeased(_htmlDoc);
             carModel.Make = ExtractCarMakeAndModel(_htmlDoc.DocumentNode.SelectNodes("//title").FirstOrDefault().InnerText);
             carModel.Model = ExtractCarModel(content);
-            carModel.is_leased = ExtractCarLease(content);
-            carModel.traffic_status = ExtractCarTrafficStatus(content);
+            carModel.Traffic_status = ExtractCarTrafficStatus(content);
             return carModel;
         }
 
-
-
-
-
    
+
+
+
+
+
         public async Task<IEnumerable<Car>> ExtractCarHistory(string internalUserId, string csrfToken,string cookie)
         {
             try
@@ -103,20 +105,31 @@ namespace CarInfo
                 var ownerTraceLink = ExtractOwnerTraceLink(owner.Content);
                 li.Add(new OwnerModel() { FullName = person, DateOvertaken = dateOvertaken, Location = location, OwnerTraceLink = ownerTraceLink });
             }
-            car.owners = li;
+            car.Owners = li;
             return car;
         }
 
 
-        private static string ExtractYearlyTax(string query)
+        private static string ExtractYearlyTaxes(HtmlDocument _htmlDoc)
         {
             try
             {
-                return Regex.Match(query, @"(?:""yearly_tax"":)(.*?)(?:,)").Groups.Values.ElementAt(1).Value;
+                return _htmlDoc.DocumentNode.SelectNodes("//*[@id='box-data']/div/div/ul/li[22]/span[2]").FirstOrDefault().InnerText;
             }
             catch
             {
                 return "Okänd skatt";
+            }
+        }
+        private static string ExtractStolenStatus(HtmlDocument _htmlDoc)
+        {
+            try
+            {
+                return _htmlDoc.DocumentNode.SelectNodes("//*[@id='box-data']/div/div/ul/li[6]/span[2]").FirstOrDefault().InnerText;
+            }
+            catch
+            {
+                return "Okänt";
             }
         }
 
@@ -165,7 +178,7 @@ namespace CarInfo
         private static string ExtractCarTrafficStatus(string query)
         {
             try
-            {
+            {//*[@id="box-data"]/div/div/ul/li[25]/span[2]
                 return Regex.Match(query, @"(?:""traffic_status"":)(.*?)(?:,)").Groups.Values.ElementAt(1).Value;
             }
             catch
@@ -187,15 +200,15 @@ namespace CarInfo
 
 
         }
-        private static string ExtractCarLease(string query)
+        private static string ExtractIsLeased(HtmlDocument _htmlDoc)
         {
             try
             {
-                return Regex.Match(query, @"(?:""is_leased"":)(.*?)(?:,)").Groups.Values.ElementAt(1).Value;
+                return _htmlDoc.DocumentNode.SelectNodes("//*[@id='box-data']/div/div/ul/li[25]/span[2]").FirstOrDefault().InnerText;
             }
             catch
             {
-                return "Okänd ägandestatus";
+                return "Okänt trafikstatus";
             }
 
         }
