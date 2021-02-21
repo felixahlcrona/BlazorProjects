@@ -1,5 +1,4 @@
-﻿using Api.Controllers;
-using EasySubFinder.Entites;
+﻿using EasySubFinder.Entites;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using SubtitleCrawler;

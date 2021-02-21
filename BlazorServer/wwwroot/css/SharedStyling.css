@@ -167,3 +167,36 @@
     max-width: 170px;
     width: 15%;
 }
+
+
+.ex2 .parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ex2 .box {
+    flex: 1 1 150px; /*  Stretching: */
+    flex: 0 1 150px; /*  No stretching: */
+    margin: 5px;
+}
+
+.carinfoOverview {
+    padding: 3%;
+    display: inline-grid;
+}
+.carinfoParent {
+    display: flex;
+    padding: 10px;
+}
+.carinfoChild{
+margin:10px;
+}
+.carBox {
+    background-color: #f3f5f7;
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}

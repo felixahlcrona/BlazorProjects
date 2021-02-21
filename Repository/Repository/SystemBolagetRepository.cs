@@ -27,10 +27,10 @@ namespace Repository.Repository
         public async Task<List<SystemBolagetEntity>> GetAllProductsAsync()
         {
 
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://api-extern.systembolaget.se/product/v1/product");
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://api-extern.systembolaget.se/site/v1/site");
             _clientFactory.DefaultRequestHeaders.Clear();
             _clientFactory.DefaultRequestHeaders.Add("Host", "api-extern.systembolaget.se");
-            _clientFactory.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "7bc3f02b4c574e74aeb2cbff9a3c1258");
+            _clientFactory.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "c2caba4c1b6b471b8fdc444f40488674");
             HttpResponseMessage response = await _clientFactory.SendAsync(request);
 
             if (response.IsSuccessStatusCode)

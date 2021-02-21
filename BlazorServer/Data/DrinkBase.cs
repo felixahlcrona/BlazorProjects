@@ -1,6 +1,4 @@
-﻿using Api;
-using Api.Controllers;
-using AvanzaScraper;
+﻿using AvanzaScraper;
 using BlazorServer.Models;
 using BlazorServer.Services;
 using Microsoft.AspNetCore.Components;

@@ -42,19 +42,58 @@ namespace CarInfo
             var internalUserId = ExtractInternalUserId(content);
             var history = await ExtractCarHistory(internalUserId, csrfToken, cookie);
             var carModel = ExtractPersonalInfo(history);
+            carModel.CoverPhotoUrl = await GetCoverPhoto(regNmr);
             carModel.YearlyTax = ExtractYearlyTaxes(_htmlDoc);
             carModel.StolenStatus = ExtractStolenStatus(_htmlDoc);
-            carModel.Is_leased = ExtractIsLeased(_htmlDoc);
             carModel.Make = ExtractCarMakeAndModel(_htmlDoc.DocumentNode.SelectNodes("//title").FirstOrDefault().InnerText);
             carModel.Model = ExtractCarModel(content);
-            carModel.Traffic_status = ExtractCarTrafficStatus(content);
+
+
+            carModel.Is_leased = ExtractMoreInfo(_htmlDoc, "data-leasing");
+            carModel.Traffic_status = ExtractMoreInfo(_htmlDoc, "data-traffic-status");
+
+            
             return carModel;
         }
 
-   
 
 
 
+        public async Task<string> GetCoverPhoto(string regNmr)
+        {
+            try
+            {
+
+                var client = new RestClient($"https://www.car.info/sv-se/search/super/{regNmr}");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("authority", "www.car.info");
+                request.AddHeader("cache-control", "max-age=0");
+                request.AddHeader("sec-ch-ua", "\"Chromium\";v=\"88\", \"Google Chrome\";v=\"88\", \";Not\\A\"Brand\";v=\"99\"");
+                request.AddHeader("sec-ch-ua-mobile", "?1");
+                request.AddHeader("upgrade-insecure-requests", "1");
+                client.UserAgent = "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Mobile Safari/537.36";
+                request.AddHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+                request.AddHeader("sec-fetch-site", "none");
+                request.AddHeader("sec-fetch-mode", "navigate");
+                request.AddHeader("sec-fetch-user", "?1");
+                request.AddHeader("sec-fetch-dest", "document");
+                request.AddHeader("accept-language", "sv-SE,sv;q=0.9,en-US;q=0.8,en;q=0.7");
+                request.AddHeader("cookie", "__cfduid=d1d549f201ba026bf2c86c26655087bc11613464166; XSRF-TOKEN=eyJpdiI6IjgwVVU0YWhIZlJyUkVGT29mU28vL3c9PSIsInZhbHVlIjoibjBNTi9qam5xR091cG5CSzRhdGkrb213aDVmMStRSjZnVTJWMUZ5Sk5BRkdoMVFaTXVOS20rYUcrMWJvTWFrV0FIU0NkR3NKLzRVUHRpb1RiVnpwcWVRTFE4eFluYWUrOTlEN2M0TUZ0TFBaUSt1SmtmSUIrdU10S3lyOUpvWU8iLCJtYWMiOiJlMzMyYzE5MWM0NGY1YWM3NDBjMTMwZTEzZWYxNmRhMDdlODYxMDA1M2U2ZGI5NTIzZjIwODYxYzllYmViZDhkIn0%3D; laravel_session=eyJpdiI6IkhSUFAzbUFucnU2Rkw1aGpmUVBpNHc9PSIsInZhbHVlIjoiKzB0VjY2Qm0rNS9TUk0zRzV3RXJSNUI0K2txQStXNituWm5iejZEeXkydG1XMFVHTEVNaE1qT3ZhZXI5ZlJQZTFhRjR3YkNoUW1aZW95ZElFUHQzcXd5UEhEdGNkUHJCSkdpVml1MHZmRGtLa3ExUXJPOUNQazg5dW40OHlGazAiLCJtYWMiOiJhMWQ2MmMwYWEyODg0ZjRlOWU2NDdhZTlhY2JiYTQ5OTY5NTU5NjFkOTU4Mzg3N2IxOGViYmZkYTQyODNmMGRhIn0%3D; XSRF-TOKEN=eyJpdiI6InNWVHVENnZpaVRwdEFTKzhyRkM0T0E9PSIsInZhbHVlIjoiRlphQzhiVlZ2M2FOcUE0ZVUwM3VpT3hRVnUwMlF2RjBKVmQ0Y1pWTEZUYnFyZlcxN0NMaVJSbHVnb1pDQ0NuWWUxcnVZMDFmbUdkYWsvZVR3a3dVdElyRW4yOHVpY2F3cWl1NTdjeHQ2SHJpUUFISk9ocW5EOCtxNWFGZFA2ZHMiLCJtYWMiOiJlYTVhOGFjZTRlOTZlYWJmYzI3OWVhYjM4Y2ExNjBlN2VjYTQzMzg1YjAzZTAwMjZkZWFlNTQ3N2Q0MmU2ODMwIn0%3D; laravel_session=eyJpdiI6Imtpc0hvZWxMeWlRZElOZnMxQlBtVFE9PSIsInZhbHVlIjoiTXVrMTJJNWliWUxGTERJWDRlMHR2bVVuTnpSUlgzMHp2VzcrZTJXcjhUeG9ud1RrUDNnWjc1Vk5ONTllMkN2K1pLZXFMRFU5bHZmWG9FZkc3b2lhTG5UQXpRUmNKR2dnY1d1TTgvYm51QjlDOUI3VnpuWDBISVZhdjNXczBtd1ciLCJtYWMiOiJiMTdhN2UwZWRiZTE1MGJhN2YzZmU2NjcyM2FjZjQ3MzMxODZmODBlYzAyNDI4NmU3YjNiMTZkMTYxYTY0NDdkIn0%3D");
+
+                IRestResponse response = client.Execute(request);
+                var res = JsonConvert.DeserializeObject<CarModel>(response.Content);
+                var coverPhoto = res.hits.idents.FirstOrDefault().cover_photo_image_id;
+                var coverPhotoUrl = $"https://s.car.info/image_files/360/{coverPhoto}.jpg";
+                return coverPhotoUrl;
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+        }
 
 
         public async Task<IEnumerable<Car>> ExtractCarHistory(string internalUserId, string csrfToken,string cookie)
@@ -114,7 +153,12 @@ namespace CarInfo
         {
             try
             {
-                return _htmlDoc.DocumentNode.SelectNodes("//*[@id='box-data']/div/div/ul/li[22]/span[2]").FirstOrDefault().InnerText;
+                var res = _htmlDoc.DocumentNode.SelectNodes("//*[@id='box-data']/div/div/ul/li[22]/span[2]").FirstOrDefault().InnerText;
+                if(res.Contains("SEK"))
+                {
+                    return res;
+                }
+                return "Okänd skatt";
             }
             catch
             {
@@ -129,7 +173,7 @@ namespace CarInfo
             }
             catch
             {
-                return "Okänt";
+                return "Okänt status";
             }
         }
 
@@ -141,7 +185,7 @@ namespace CarInfo
             }
             catch
             {
-                return "";
+                return "Okänt";
             }
 
         }
@@ -175,18 +219,7 @@ namespace CarInfo
 
 
 
-        private static string ExtractCarTrafficStatus(string query)
-        {
-            try
-            {//*[@id="box-data"]/div/div/ul/li[25]/span[2]
-                return Regex.Match(query, @"(?:""traffic_status"":)(.*?)(?:,)").Groups.Values.ElementAt(1).Value;
-            }
-            catch
-            {
-                return "Okänt trafikstatus";
-            }
-
-        }
+   
         private static string ExtractCarModel(string query)
         {
             try
@@ -200,15 +233,17 @@ namespace CarInfo
 
 
         }
-        private static string ExtractIsLeased(HtmlDocument _htmlDoc)
+   
+
+        private static string ExtractMoreInfo(HtmlDocument _htmlDoc, string param)
         {
             try
             {
-                return _htmlDoc.DocumentNode.SelectNodes("//*[@id='box-data']/div/div/ul/li[25]/span[2]").FirstOrDefault().InnerText;
+                return _htmlDoc.DocumentNode.SelectNodes($"//*[@id='{param}']").FirstOrDefault().InnerText;
             }
             catch
             {
-                return "Okänt trafikstatus";
+                return "-";
             }
 
         }

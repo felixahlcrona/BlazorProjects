@@ -1,10 +1,9 @@
 //using BlazorServer.Data;
-using Api;
-using Api.Controllers;
+
 using BlazorServer.Pages;
 using CarInfo;
+using InsiderInfo;
 using EasySubFinder.Entites;
-using LazyCache;
 using Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,8 +37,8 @@ namespace BlazorServer
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjcxMTM4QDMxMzgyZTMxMmUzMEUwVHZVTWR3RFBYSnJQaXk2eUNoTWROWURNaWhoL2dNTHZhTEQ4azFJbWc9");
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
             services.AddTransient<HttpClient>();
-            services.AddTransient<IAppCache, CachingService>();
             services.AddTransient<Carfinderinfo>();
+            services.AddTransient<InsiderTracker>();
             //services.AddSingleton<LzyCache>();
 
             //SystemBolaget

@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AgileObjects.AgileMapper" Version="1.7.2" />
-    <PackageReference Include="Blazored.Typeahead" Version="4.3.0" />
+    <PackageReference Include="Blazored.Typeahead" Version="4.5.1" />
     <PackageReference Include="HtmlAgilityPack.NetCore" Version="1.5.0.1" />
     <PackageReference Include="MatBlazor" Version="2.6.0" />
     <PackageReference Include="morelinq" Version="3.3.2" />
@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Api\Api.csproj" />
     <ProjectReference Include="..\AvanzaScraper\AvanzaScraper.csproj" />
     <ProjectReference Include="..\CarInfo\CarInfo.csproj" />
+    <ProjectReference Include="..\InsiderInfo\InsiderInfo.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\SubtitleCrawler\SubtitleCrawler.csproj" />
   </ItemGroup>
