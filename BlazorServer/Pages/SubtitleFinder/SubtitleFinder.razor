@@ -1,21 +1,14 @@
 ﻿@page "/subtitleFinder"
 @inherits SubtitleFinderBase
 @using System.Globalization
-@using BlazorServer.Components   
+@using BlazorServer.Components
+
+<div class="centerDiv">
+
 
     <div class="centerDiv">
 
-        <i class="fas fa-question fa-3x" @onclick="@((e) => displayInfo = true)" @onmouseout="@((e) => displayInfo = false)"></i>
-        <br />
-        @if (displayInfo == true)
-        {
-            <InfoBox />
-        }
-
-    
-    <div class="centerDiv">
-
-
+        <InfoBox InfoText="Crawls subscene and finds the most likely subtitle by using Levenshtein distance algorithm on the collected data. Cloudflare bypass atm" />
 
         <p class="animate__animated animate__bounceInLeft"></p>
         <MatButton @onclick="@((e) => ExampleSearch("Interstellar.2014.1080p.BluRay.x264.DTS-RARBG"))">Give me an example</MatButton>
@@ -25,64 +18,59 @@
         <br />
 
         @if (movieInput?.Length > 2)
-        {    
+        {
         <MatButton @onclick="@((e) => SearchForMovie())">Search</MatButton>
         }
 
         @if (errorMessage != null)
         {
-            <h1 class="animate__animated animate__swing">@errorMessage</h1>
+        <h1 class="animate__animated animate__swing">@errorMessage</h1>
         }
-
-
-        @*<MatButton @onclick="@((e) => displayExample = true)">Show examples</MatButton>
-        @if (displayExample == true)
-        {
-            <div class="centerDiv">
-                <MatSelectItem ValueChanged="(string e) => ClickHandlerEX(e)" HelperText="Example movies" Items="@exampleMovies"></MatSelectItem>
-            </div>
-        }*@
 
 
         @if (loading == true)
         {
-            <LoadingIcon />
+        <LoadingIcon />
         }
+
     </div>
 
-        <Poster movieList="@movieList"></Poster>
+    @if (movieList?.Count() > 0)
+    {
 
-        <SortByLanguage @bind-Language="@language" movieList="@movieList" />
+    <div class="movieArea">
+        <div class="movieSection">
+            <Poster movieList="@movieList"></Poster>
+            <SortByLanguage @bind-Language="@language" movieList="@movieList" />
+        </div>
 
-
-        <br />
-        @foreach (var item in movieList.Where(e => e.SubtitleLanguage == language))
-        {
-            <div class="movieCard" @onclick="@((e) => GetSelectedMovieDetails(item))">
-                <h1>@item.RelevanceScore % Match</h1>
-
-
-                @if (item.Url == selectedMovieDetails.Url)
+        <div class="movieSection">
+            <h3>@movieInput</h3>
+            @foreach (var item in movieList.Where(e => e.SubtitleLanguage == language))
                 {
-                    <div class="animate__animated animate__bounceIn">
-                        <p>@item.Title</p>
-                        <div class="detailsSection">
-                            <p>Downloads</p>
-                            <i class="fas fa-download fa-3x" style="color:#6fcc29;" /><p>@selectedMovieDetails.DownloadsCount</p>
-                        </div>
-                        <div class="detailsSection">
-                            <p>Subtitle rating</p>
-                            <i class="fas fa-star fa-3x" style="color:#ffc107"></i><p>@selectedMovieDetails.RatingValue/10</p>
-                        </div>
-                        <h3> <a href="@selectedMovieDetails.DownloadLink"> Download subtitle</a> </h3>
+            <div class="movieCard" @onclick="@((e) => GetSelectedMovieDetails(item))">
+                <h3>@item.RelevanceScore % Match</h3>
+                @if (item.Url == selectedMovieDetails.Url)
+                        {
+                <div class="animate__animated animate__bounceIn">
+                    <p>@item.Title</p>
+                    <div class="detailsSection">
+                        <p>Downloads</p>
+                        <i class="fas fa-download fa-3x" style="color:#6fcc29;" /><p>@selectedMovieDetails.DownloadsCount</p>
                     </div>
+                    <div class="detailsSection">
+                        <p>Subtitle rating</p>
+                        <i class="fas fa-star fa-3x" style="color:#ffc107"></i><p>@selectedMovieDetails.RatingValue/10</p>
+                    </div>
+                    <h3> <a href="@selectedMovieDetails.DownloadLink"> Download subtitle</a> </h3>
+                </div>
                 }
             </div>
-
-
-        }
-
+            }
+        </div>
     </div>
+    }
+</div>
 
 
 

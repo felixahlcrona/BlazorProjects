@@ -1,0 +1,11 @@
+﻿@page "/InfoBox"
+@inherits BlazorServer.Pages.SubtitleFinderBase
+
+@code{
+    [Parameter] public string InfoText { get; set; }
+}
+        <div class="animate__animated animate__swing">
+            <div class="alert alert-success" style="display:inline-flex; max-width: 400px;">         
+                <p> <i class="far fa-3x fa-question-circle"></i> @InfoText</p>
+            </div>
+        </div>

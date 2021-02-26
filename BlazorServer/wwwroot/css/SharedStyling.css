@@ -23,7 +23,7 @@
 
 .textBox {
     background-color: #d1ecf1;
-    max-width: 700px;
+    max-width: 300px;
     margin: auto;
     padding: 30px;
     border-radius: 10px;
@@ -38,11 +38,10 @@
     max-width: 675px;
     border-radius: 10px;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
-    .movieCard:hover {
-        background-color: #d3f3d3;
-    }
+
 
 .detailsSection {
     background-color: #fefefe;
@@ -100,9 +99,9 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-right: 10%;
-    margin-left: 10%;
-    width: 80%;
+    margin-right: 30%;
+    margin-left: 30%;
+    width: 40%;
 }
 
 .menuCard {
@@ -164,8 +163,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 170px;
-    width: 15%;
+    max-width: 3%;
 }
 
 
@@ -199,4 +197,15 @@ margin:10px;
     padding: 30px;
     border-radius: 10px;
     margin-bottom: 15px;
+}
+
+.movieArea {
+    display: grid;
+    grid-template-columns: minmax(150px, 35%) 1fr;
+    background-color: #ececec;
+    max-width: 700px;
+    margin: auto;
+}
+.movieSection{
+    padding:10%;
 }

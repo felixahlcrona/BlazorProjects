@@ -35,8 +35,7 @@ namespace BlazorServer
             services.AddServerSideBlazor();
             services.AddSyncfusionBlazor();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjcxMTM4QDMxMzgyZTMxMmUzMEUwVHZVTWR3RFBYSnJQaXk2eUNoTWROWURNaWhoL2dNTHZhTEQ4azFJbWc9");
-            services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
-            services.AddTransient<HttpClient>();
+            services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });          
             services.AddTransient<Carfinderinfo>();
             services.AddTransient<InsiderTracker>();
             //services.AddSingleton<LzyCache>();
