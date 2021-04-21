@@ -1,3 +1,18 @@
+
+@import url('https://fonts.cdnfonts.com/css/garogier');
+
+* {
+    font-family: 'Garogier', sans-serif;
+    word-break: break-word;
+}
+
+body {
+    background: rgb(255,252,177);
+    background: radial-gradient(circle, rgba(255,252,177,1) 0%, rgba(2,71,83,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .centerDiv {
     text-align: center;
     margin: auto;
@@ -209,3 +224,22 @@ margin:10px;
 .movieSection{
     padding:10%;
 }
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }

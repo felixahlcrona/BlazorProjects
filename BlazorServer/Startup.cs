@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SubtitleCrawler;
-using Syncfusion.Blazor;
 using System.Net.Http;
 using Repository.Repository;
 using BlazorServer.Services;
@@ -31,17 +30,14 @@ namespace BlazorServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<HttpClient>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSyncfusionBlazor();
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjcxMTM4QDMxMzgyZTMxMmUzMEUwVHZVTWR3RFBYSnJQaXk2eUNoTWROWURNaWhoL2dNTHZhTEQ4azFJbWc9");
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });          
             services.AddTransient<Carfinderinfo>();
-            services.AddTransient<InsiderTracker>();
             //services.AddSingleton<LzyCache>();
 
             //SystemBolaget
-            services.AddTransient<ISystemBolagetService,SystemBolagetService>();
             services.AddTransient<ISystemBolagetRepository,SystemBolagetRepository>();
 
             //SubtitleFinder

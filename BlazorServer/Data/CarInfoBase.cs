@@ -8,7 +8,7 @@ namespace BlazorServer.Pages
 {
     public class CarInfoBase : ComponentBase
     {
-        
+
         [Inject]
         protected Carfinderinfo _carfinder { get; set; }
 
@@ -25,25 +25,25 @@ namespace BlazorServer.Pages
             {
                 IsLoading = true;
                 car = await _carfinder.RegLookUp(regInput);
-                regInput = "";
+                regInput = string.Empty;
                 IsLoading = false;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                regInput = "";
+                regInput = string.Empty;
                 IsLoading = false;
                 await renderErrorMessage();
             }
-            
+
         }
 
         public async Task renderErrorMessage()
         {
-            errorMessage = "Found no car with this name";
+            errorMessage = "Found no car with this keyplate";
             StateHasChanged();
             await Task.Delay(2000);
             errorMessage = null;
-           
+
         }
 
         public async Task SetInput(string e)
@@ -52,8 +52,5 @@ namespace BlazorServer.Pages
         }
 
     }
-
-
-
 
 }

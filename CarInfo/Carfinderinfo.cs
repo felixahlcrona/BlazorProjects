@@ -20,9 +20,6 @@ namespace CarInfo
         }
 
 
-
-
-
         public async Task<CarModel> RegLookUp(string regNmr)
         {
 
