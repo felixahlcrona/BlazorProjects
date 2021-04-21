@@ -10,7 +10,7 @@
 
         <InfoBox InfoText="Crawls subscene and finds the most likely subtitle by using Levenshtein distance algorithm on the collected data. Cloudflare bypass atm" />
 
-        <p class="animate__animated animate__bounceInLeft"></p>
+        <p class="animate__animated animate__fadeInDown"></p>
         <MatButton @onclick="@((e) => ExampleSearch("Interstellar.2014.1080p.BluRay.x264.DTS-RARBG"))">Give me an example</MatButton>
 
         <br />
@@ -19,18 +19,18 @@
 
         @if (movieInput?.Length > 2)
         {
-        <MatButton @onclick="@((e) => SearchForMovie())">Search</MatButton>
+            <MatButton @onclick="@((e) => SearchForMovie())">Search</MatButton>
         }
 
         @if (errorMessage != null)
         {
-        <h1 class="animate__animated animate__swing">@errorMessage</h1>
+            <h1 class="animate__animated animate__fadeInDown">@errorMessage</h1>
         }
 
 
         @if (loading == true)
         {
-        <LoadingIcon />
+            <LoadingIcon />
         }
 
     </div>
@@ -38,37 +38,38 @@
     @if (movieList?.Count() > 0)
     {
 
-    <div class="movieArea">
-        <div class="movieSection">
-            <Poster movieList="@movieList"></Poster>
-            <SortByLanguage @bind-Language="@language" movieList="@movieList" />
-        </div>
+        <div class="movieArea">
+            <div class="movieSection">
+                <Poster movieList="@movieList"></Poster>
+                <SortByLanguage @bind-Language="@language" movieList="@movieList" />
+            </div>
 
-        <div class="movieSection">
-            <h3>@movieInput</h3>
-            @foreach (var item in movieList.Where(e => e.SubtitleLanguage == language))
+            <div class="movieSection">
+                <h3>@movieInput</h3>
+                @foreach (var item in movieList.Where(e => e.SubtitleLanguage == language))
                 {
-            <div class="movieCard" @onclick="@((e) => GetSelectedMovieDetails(item))">
-                <h3>@item.RelevanceScore % Match</h3>
-                @if (item.Url == selectedMovieDetails.Url)
+                    <div class="movieCard" @onclick="@((e) => GetSelectedMovieDetails(item))">
+                        <h3>@item.RelevanceScore % Match</h3>
+                        @if (item.Url == selectedMovieDetails.Url)
                         {
-                <div class="animate__animated animate__bounceIn">
-                    <p>@item.Title</p>
-                    <div class="detailsSection">
-                        <p>Downloads</p>
-                        <i class="fas fa-download fa-3x" style="color:#6fcc29;" /><p>@selectedMovieDetails.DownloadsCount</p>
+                            <div class="animate__animated animate__fadeInDown">
+                                <p>@item.Title</p>
+                                <div class="detailsSection">
+                                    <p>Downloads</p>
+                                    <i class="fas fa-download fa-3x" style="color:#6fcc29;" /><p>@selectedMovieDetails.DownloadsCount</p>
+                                </div>
+                                <div class="detailsSection">
+                                    <p>Subtitle rating</p>
+                                    <i class="fas fa-star fa-3x" style="color:#ffc107"></i><p>@selectedMovieDetails.RatingValue/10</p>
+                                </div>
+                                <h3> <a href="@selectedMovieDetails.DownloadLink"> Download subtitle</a> </h3>
+                            </div>
+                        }
+                        
                     </div>
-                    <div class="detailsSection">
-                        <p>Subtitle rating</p>
-                        <i class="fas fa-star fa-3x" style="color:#ffc107"></i><p>@selectedMovieDetails.RatingValue/10</p>
-                    </div>
-                    <h3> <a href="@selectedMovieDetails.DownloadLink"> Download subtitle</a> </h3>
-                </div>
                 }
             </div>
-            }
         </div>
-    </div>
     }
 </div>
 
