@@ -47,13 +47,13 @@
                 </div>
 
 
-                <div class="carinfoParent">
+                <div class="OwnerHistoryContainer">
 
                     @foreach (var item in car.Owners.OrderByDescending(e => e.DateOvertaken))
                         {
                     <div class="mat-elevation-z10">
-                        <div class="carinfoChild"><i class="fas fa-user fa-2x" style="color:orange" /><p><a href="@item.OwnerTraceLink" target="_blank">@item.FullName</a></p></div>
-                        <div class="carinfoChild"><i class="fas fa-house-user fa-2x" style="color:orange" /><p><b></b> @item.DateOvertaken </p></div>
+                        <div class="OwnerHistoryBox"><i class="fas fa-user fa-2x" style="color:orange" /><p><a href="@item.OwnerTraceLink" target="_blank">@item.FullName</a></p></div>
+                        <div class="OwnerHistoryBox"><i class="fas fa-house-user fa-2x" style="color:orange" /><p><b></b> @item.DateOvertaken </p></div>
                     </div>
                     }
 
