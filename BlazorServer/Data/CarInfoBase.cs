@@ -1,7 +1,8 @@
 ﻿using CarInfo;
 using Microsoft.AspNetCore.Components;
-
+using Repository.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BlazorServer.Pages
@@ -12,14 +13,15 @@ namespace BlazorServer.Pages
         [Inject]
         protected Carfinderinfo _carfinder { get; set; }
 
-        public CarModel car = new CarModel();
-        public string regInput;
-        public string errorMessage;
-        public bool displayInfo;
-        public bool IsLoading;
+        protected CarModel car = new CarModel();
+        protected List<string> images = new List<string>();
+        protected string regInput;
+        protected string errorMessage;
+        protected bool displayInfo;
+        protected bool IsLoading;
 
 
-        public async Task SearchForCar()
+        protected async Task SearchForCar()
         {
             try
             {
@@ -37,7 +39,7 @@ namespace BlazorServer.Pages
 
         }
 
-        public async Task renderErrorMessage()
+        protected async Task renderErrorMessage()
         {
             errorMessage = "Found no car with this keyplate";
             StateHasChanged();
@@ -46,7 +48,7 @@ namespace BlazorServer.Pages
 
         }
 
-        public async Task SetInput(string e)
+        protected async Task SetInput(string e)
         {
             regInput = e;
         }

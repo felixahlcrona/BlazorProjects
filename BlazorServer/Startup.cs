@@ -43,6 +43,8 @@ namespace BlazorServer
             //SubtitleFinder
             services.AddTransient<ISubtitleFinderService, SubtitleFinderService>();
             services.AddTransient<ISubtitleFinderRepository, SubtitleFinderRepository>();
+
+            services.AddTransient<IGoogleImagesRepository, GoogleImagesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,76 @@
+﻿@page "/Main"
+@inject IGoogleImagesRepository _googleImageRepository
+
+
+
+<div class="centerDiv">
+
+    <InfoBox InfoText="HTTP request against a few sites to collectively get personal info about previous owners of the car, they keep trying to hide it better and better so will see how long it lives on." />
+
+    <MatTextField @bind-Value="Query" Required="true" Label="Image" Style="width: 85%; max-width: 500px;"></MatTextField>
+    <br />
+
+
+    <MatButton @onclick="@((e) => ImageSearch())">Search</MatButton>
+
+    <div class="carBox">
+        @if (IsLoading is false)
+        {
+            foreach (var item in ImageList)
+            {
+
+                <MatCard class="demo-mat-card">
+                    <MatCardContent>
+                        <MatCardMedia Wide="true" ImageUrl="@item"></MatCardMedia>
+                        <div class="demo-mat-card-content">
+                            <MatHeadline6 class="demo-mat-card-clean-margin">
+                                Our Changing Planet
+                            </MatHeadline6>
+                            <MatSubtitle2 class="demo-mat-card-clean-margin">
+                                by Kurt Wagner
+                            </MatSubtitle2>
+                        </div>
+
+                        <MatBody2 class="demo-mat-card-content demo-mat-card-clean-margin">
+                            Visit ten places on our planet that are undergoing the biggest changes today.
+                        </MatBody2>
+                    </MatCardContent>
+                </MatCard>
+
+                @*<div style="display:inline-flex">
+                    <img src="@item"
+                         onerror="this.onerror=null;this.src='https://assets.prestashop2.com/sites/default/files/styles/blog_750x320/public/blog/2019/10/banner_error_404.jpg?itok=eAS4swln';">
+                </div>*@
+            }
+
+
+        }
+    </div>
+
+
+    @if (IsLoading == true)
+    {
+        <LoadingIcon />
+    }
+
+</div>
+
+
+@code{
+
+    public List<string> ImageList = new List<string>();
+    public bool IsLoading;
+    public string Query;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+    private async Task ImageSearch()
+    {
+        IsLoading = true;
+        ImageList = await _googleImageRepository.GetGoogleImages(Query);
+        IsLoading = false;
+    }
+}

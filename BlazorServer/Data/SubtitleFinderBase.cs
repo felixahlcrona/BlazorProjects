@@ -17,20 +17,20 @@ namespace BlazorServer.Pages
 
         [Inject]
         protected ISubtitleFinderService _subtitleFinderService { get; set; }
-        public SubtitleFinderModel movie = new SubtitleFinderModel();
-        public IEnumerable<SubtitleFinderModel> movieList = new List<SubtitleFinderModel>();
-        public SubtitleFinderModel selectedMovieDetails = new SubtitleFinderModel();
+        protected SubtitleFinderModel movie = new SubtitleFinderModel();
+        protected IEnumerable<SubtitleFinderModel> movieList = new List<SubtitleFinderModel>();
+        protected SubtitleFinderModel selectedMovieDetails = new SubtitleFinderModel();
 
-        public string movieInput;
-        public string errorMessage;
-        public bool displayInfo;
-        public bool loading;
-        public string language = "English";
-        public bool displayExample;
-        public int Counter = 1;
-        public bool newSearch;
+        protected string movieInput;
+        protected string errorMessage;
+        protected bool displayInfo;
+        protected bool loading;
+        protected string language = "English";
+        protected bool displayExample;
+        protected int Counter = 1;
+        protected bool newSearch;
 
-        public List<string> exampleMovies = new List<string>()
+        protected List<string> exampleMovies = new List<string>()
         {
             "Tropic.Thunder.Unrated.2008.BluRay.DTS.x264.dxva-EuReKA",
             "Jojo.Rabbit.2019.DVDScr.XVID.AC3.Hive-CM8[TGx]",
@@ -44,7 +44,7 @@ namespace BlazorServer.Pages
         };
 
 
-        public async Task SearchForMovie()
+        protected async Task SearchForMovie()
         {
 
             try
@@ -65,7 +65,7 @@ namespace BlazorServer.Pages
 
         }
 
-        public async Task renderErrorMessage()
+        protected async Task renderErrorMessage()
         {
             errorMessage = "Found no subtitles with this name";
             StateHasChanged();
@@ -73,7 +73,7 @@ namespace BlazorServer.Pages
             errorMessage = null;
 
         }
-        public async Task GetSelectedMovieDetails(SubtitleFinderModel movie)
+        protected async Task GetSelectedMovieDetails(SubtitleFinderModel movie)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace BlazorServer.Pages
             }
         }
 
-        public async Task ExampleSearch(string e)
+        protected async Task ExampleSearch(string e)
         {
             Random rnd = new Random();
             int random = rnd.Next(exampleMovies.Count);
@@ -94,7 +94,7 @@ namespace BlazorServer.Pages
 
             await SearchForMovie();
         }
-        public async Task SetInput(string e)
+        protected async Task SetInput(string e)
         {
             movieInput = e;
 

@@ -6,62 +6,62 @@
 
 <div class="centerDiv">
 
-  <InfoBox InfoText="HTTP request against a few sites to collectively get personal info about previous owners of the car, they keep trying to hide it better and better so will see how long it lives on." />
+    <InfoBox InfoText="HTTP request against a few sites to collectively get personal info about previous owners of the car, they keep trying to hide it better and better so will see how long it lives on." />
 
-    <MatTextField @bind-Value="regInput"  Required="true" Label="ABC123" Style="width: 85%; max-width: 500px;"></MatTextField>
+    <MatTextField @bind-Value="regInput" Required="true" Label="ABC123" Style="width: 85%; max-width: 500px;"></MatTextField>
     <br />
 
-   
+
     <MatButton @onclick="@((e) => SearchForCar())">Search</MatButton>
-   
+
 
     @if (errorMessage != null)
     {
-    <h1 class="animate__animated animate__fadeInDown">@errorMessage</h1>
+        <h1 class="animate__animated animate__fadeInDown">@errorMessage</h1>
     }
 
     @if (IsLoading == true)
     {
-    <LoadingIcon />
+        <LoadingIcon />
     }
 
-
+ 
     @if (car.Owners?.Count() > 0)
     {
 
-    <div class="carBox">
-        <h3>@car.Make @car.Model</h3>
-        <div class="carinfoOverview">
+        <div class="carBox">
+            <h3>@car.Make @car.Model</h3>
+            <div class="carinfoOverview">
 
-            <div class="card_image">
-                <img src="@car.CoverPhotoUrl" style="max-width: 100%;" />
-            </div>
-
-            <div>
-
-                <div class="carinfoParent">
-                    <div class="carinfoChild"><i class="fas fa-money-bill fa-2x" style="color:forestgreen" /><p><b>Skatt:</b> @car.YearlyTax </p></div>
-                    <div class="carinfoChild"><i class="fas fa-traffic-light fa-2x" style="color:forestgreen" /><p><b>Trafik status:</b> @car.Traffic_status </p></div>
-                    <div class="carinfoChild"><i class="fas fa-file-signature fa-2x" style="color:forestgreen" /><p><b>Leasad?:</b> @car.Is_leased </p></div>
-                    <div class="carinfoChild"><i class="fas fa-mask fa-2x" style="color:forestgreen" /><p><b>Stulen?:</b> @car.StolenStatus </p></div>
+                <div class="card_image">
+                    <img src="@car.CoverPhotoUrl" style="max-width: 100%;" />
                 </div>
 
+                <div>
 
-                <div class="OwnerHistoryContainer">
-
-                    @foreach (var item in car.Owners.OrderByDescending(e => e.DateOvertaken))
-                        {
-                    <div class="mat-elevation-z10">
-                        <div class="OwnerHistoryBox"><i class="fas fa-user fa-2x" style="color:orange" /><p><a href="@item.OwnerTraceLink" target="_blank">@item.FullName</a></p></div>
-                        <div class="OwnerHistoryBox"><i class="fas fa-house-user fa-2x" style="color:orange" /><p><b></b> @item.DateOvertaken </p></div>
+                    <div class="carinfoParent">
+                        <div class="carinfoChild"><i class="fas fa-money-bill fa-2x" style="color:forestgreen" /><p><b>Skatt:</b> @car.YearlyTax </p></div>
+                        <div class="carinfoChild"><i class="fas fa-traffic-light fa-2x" style="color:forestgreen" /><p><b>Trafik status:</b> @car.Traffic_status </p></div>
+                        <div class="carinfoChild"><i class="fas fa-file-signature fa-2x" style="color:forestgreen" /><p><b>Leasad?:</b> @car.Is_leased </p></div>
+                        <div class="carinfoChild"><i class="fas fa-mask fa-2x" style="color:forestgreen" /><p><b>Stulen?:</b> @car.StolenStatus </p></div>
                     </div>
-                    }
+
+
+                    <div class="OwnerHistoryContainer">
+
+                        @foreach (var item in car.Owners.OrderByDescending(e => e.DateOvertaken))
+                        {
+                            <div class="mat-elevation-z10">
+                                <div class="OwnerHistoryBox"><i class="fas fa-user fa-2x" style="color:orange" /><p><a href="@item.OwnerTraceLink" target="_blank">@item.FullName</a></p></div>
+                                <div class="OwnerHistoryBox"><i class="fas fa-house-user fa-2x" style="color:orange" /><p><b></b> @item.DateOvertaken </p></div>
+                            </div>
+                        }
+
+                    </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
 
     }
 </div>
