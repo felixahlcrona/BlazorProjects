@@ -1,8 +1,6 @@
 # Blazor experimental projects
 https://felixahlcrona.azurewebsites.net/
 
-Having a blast coding with Blazor so trying it out to see what's possible. 
-
 Following projects are just for fun, usually done late weekends with a few beers. Code quality 404
 
 ## Subtitlefinder
@@ -18,11 +16,11 @@ This tries to find the exact subtitle so you get pefect sync.
 Avanza publish number of people owning a trading instrument. 
 If you trade certificates or futures you buy an underlying asset like a index for example.
 These can be traded on short or long basis.
-Matching the current bear/bull(short/long) traders with the current market price there could be a possibility to see where the market is heading. This would have been perfect if the majority actually knew how to daytrade at what times but that's out of my control =)
+Matching the current bear/bull(short/long) traders with the current market price there could be a possibility to see where the market is heading.
 
 ![](https://i.imgur.com/XXNR181l.png)
 
 ## Systembolaget API
-> Browsing alcohol on Systembolaget is boring, small pictures, no typeahead image search. I wanted something different.
+> Browsing alcohol on Systembolaget, more bottle layout focused lol.
 
 ![](https://i.imgur.com/NNz5EXBl.png)
